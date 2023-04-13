@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <title>Document</title>
+
+
+<style>
+    
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    body{
+        background-color: #222;
+    }
+    .main{
+        margin: 200px auto;
+        width: fit-content;
+        display: block;
+    }
+
+    input{
+width: auto;
+height: 20px;
+padding: 6px;
+background-color: #111;
+color: white;
+font-size: x-large;
+border: none;
+outline: none;
+text-align: right;
+
+    } input:focus {
+
+background-color: black;
+transform: scale(1.1);
+
+}
+
+    h2{
+        text-align: center;
+        color: white;
+        margin: 8px auto;
+    }
+    button {
+      width: 100%;
+      cursor: pointer;
+      height: 30px;
+      border: none;
+      border-radius: 20px;
+      color: white;
+      background-color: #390053;
+      margin: 10px auto;
+
+    }
+
+    button:hover {
+
+      background-color: purple;
+      letter-spacing: 1px;
+
+    }
+</style>
+
+
+
+
+</head>
+<body>
+
+
+<div class="main">
+
+
+<form  onsubmit="check()" action="/registe" method="post">
+<label for=""><h2>اكتب اسمك</h2></label>
+<input type="text" name="name" >
+<label for=""><h2>اكتب رمز التعديل</h2></label>
+<input type="number"name='code' style="text-align: center;" id="2"><br>
+
+<button id="butt" >sumbit</button>
+
+
+
+
+</form>
+
+
+</div>
+
+<script>
+var butt = document.getElementById('butt')
+var inp = document.querySelectorAll('input')
+function check(){
+var i
+inp.forEach(element => {
+    if(element.value == ''){
+         i = true
+    }
+});
+
+if(i == true){
+    alert('please full the field ')
+}
+}
+
+</script>
+
+</body>
+</html>

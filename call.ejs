@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Calculator</title>
+  <meta charset="UTF-8">
+
+  <style>
+    * {
+
+      margin: 0;
+      padding: 0;
+
+
+    }
+
+
+
+    body {
+      background-color: #222;
+    }
+
+    .crud {
+      width: 50%;
+      margin: auto;
+      border: 2px, solid black;
+      text-transform: uppercase;
+      font-family: system-ui;
+    }
+
+    .head {
+
+      text-align: center;
+      font-size: larger;
+      margin: 12px auto;
+
+    }
+
+    input,
+    #sel,#sel2 {
+      width: 100%;
+      background-color: #111;
+      height: 30px;
+      margin: 4px;
+      border: none;
+      border-radius: 4px;
+      font-size: large;
+      padding: 4px;
+      outline: none;
+      color: white;
+      text-align: right;
+
+    }
+
+
+    input:focus {
+
+      background-color: black;
+      transform: scale(1.1);
+
+    }
+    #name2{
+      width: 75.1%;
+
+    }
+
+    #f {
+
+      width: 20%;
+      float: right;
+
+
+    }
+
+    #total {
+
+      background-color: rgba(255, 0, 0, 0.671);
+      width: 10px;
+      height: 10px;
+      font-size: larger;
+      border: none;
+      border-radius: 4px;
+      padding: 4px;
+
+
+    }
+
+    #total::before {
+
+      content: "total:";
+    }
+
+    button {
+      width: 100%;
+      cursor: pointer;
+      height: 30px;
+      border: none;
+      border-radius: 20px;
+      color: white;
+      background-color: #390053;
+
+    }
+
+    button:hover {
+
+      background-color: purple;
+      letter-spacing: 1px;
+
+    }
+
+    #text {
+      text-align: right;
+      font-size: larger;
+      color: white;
+    }
+
+
+
+
+    .i {
+
+
+margin: 21px auto;
+float: right;
+font-size: larger;
+color: white;
+
+
+
+
+    }
+ input[type=number]{
+
+  
+      background-color: #111;
+      height:35px;
+      width: 50px;
+      border: none;
+      border-radius: 4px;
+      font-size: large;
+      padding: 4px;
+      outline: none;
+      color: white;
+    
+}
+
+
+
+#num{
+
+  width: 20%;
+  height: 30px;
+  text-align: right;
+}
+#num:focus {
+
+background-color: black;
+transform: scale(1.1);
+
+}
+
+
+
+.trigger{
+
+width: 20%;
+margin: 6px auto;
+
+}
+
+
+
+
+
+
+#btn{
+  width: 30%;
+margin: 8px auto; 
+float: right; 
+}
+
+  
+  @media  (max-width: 500px) {
+  #btn{
+ 
+    width: 30%;float: right; margin: 6px auto;position: relative;bottom:14px ;
+ }}
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <div class="crud">
+
+
+    <div class="head">
+
+      <h1>استمارة تقديم الاعتراضات</h1>
+    </div>
+
+
+
+
+
+
+<form action="/"  method="post">
+
+    <div id="input">
+
+      <input name="name"  type="text" id="name2" placeholder="الاسم"/><input name="num" type="number" id="num" placeholder="الرقم الامتحاني">
+
+
+
+      <label for="sel" id="text">
+        <h3> الصف</h3>
+      </label>
+      <select id="sel" name="sel">
+
+
+        <option value="الرابع الاعدادي">الرابع الاعدادي</option>
+        <option value="الخامس الاعدادي">الخامس الاعدادي</option>
+        <option value="السادس الاعدادي">السادس الاعدادي</option>
+
+
+      </select>
+      <label for="" id="text">
+        <h3>الشعبة</h3>
+      </label>
+      <select id="sel2" name="sel2">
+
+
+        <option value='ا'>ا</option>
+        <option value="ب">ب</option>
+        <option value="ج">ج</option>
+        <option value="د">د</option>
+        <option value="ه">ه</option>
+
+
+      </select>
+      <input id="code" name="code" type="number" placeholder="اكتب رمز التعديل"  style="float: right;height:25px;width: 130px;"  >
+      <label id="text" ><h3 style="margin-top: 50px;">اكتب الدرجة التي تريد الاعتراض عليها</h3></label>
+      <div style="width: fit-content; float: right;">
+      
+      <table id="i" class="i" style="float: right;" >
+        <tr>
+          <th >الدرجة</th>
+          <th>اسم المادة </th>
+        </tr>
+        <tr>
+          <th><input id="0"type="number" value="" ></th>
+          <td><input  type="text"id='0g'  style="width: 90%;"></td>
+        </tr>
+        
+      
+      </table><br><br><br><br>
+      
+      <button onclick="add();return false"  id="btn" >add</button>
+      </div>
+    
+
+
+
+<button id="create">create</button>
+
+    </form>
+  </div>
+  
+<a href="http://localhost:3000/registe">
+  <button  class="trigger" id="update" >تعديل طلبك</button>
+</a>
+</div>
+      
+    
+
+   
+
+  
+
+
+  <script >
+
+
+
+
+var count = 0
+var arrnum = []
+arrnum[0] = document.getElementById('0') 
+var btn = document.getElementById('i')
+var arrtext = []
+arrtext[0] =  document.getElementById('0g')
+
+function add(){
+
+  if(count >=9){
+  return false
+}
+
+count++
+let row = btn.insertRow(-1); // We are adding at the end
+      var inputnum = document.createElement('input')
+      var inputtext = document.createElement('input')
+      inputnum.type = 'number'
+      inputtext.type = 'text'
+      
+      inputnum.id = count
+      inputtext.id = count + 'g'
+      inputtext.style.width = '90%'
+  
+
+      
+      let c1 = row.insertCell(0);
+      let c2 = row.insertCell(1)
+      c1.appendChild(inputnum)
+    c2.appendChild(inputtext)
+    arrtext[count] =  document.getElementById(count + 'g')
+      arrnum[count] = document.getElementById(count) 
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var num = document.getElementById('num')
+    var sel2 = document.getElementById('sel2')
+    var  sel= document.getElementById('sel')
+    var mood = 'create'
+    var tmp ;
+    var check = []
+ 
+
+var sum = 0
+  
+create.onclick = function(){
+   
+  for(var u = 0;u<arrnum.length;u++ ){
+    arrnum[u].setAttribute("name",arrtext[u].value)
+   
+    if(arrnum[u].value == ''){
+      check.push(u)
+    }else if(arrtext[u].value ==''){
+check.push(u)
+    }
+  if(check.length>1){
+
+    alert('ارجو ملى الحقول بالمعلومات')
+return false
+  }
+  
+  }
+
+
+if(num.value == ''){
+
+  alert('please full the fields with your information')
+return false
+} if(name2.value == ''){
+  alert('please full the fields with your information')
+return false
+
+}
+if(code.value == ''){
+
+  alert('الرجاء كتابة الرمز')
+return false
+}
+
+
+
+ 
+ 
+ 
+
+  loop = 7
+   for( var i = 0;i<=loop; i++ ){
+   var array = [code.value , math.value , biolgy.value , reg.value , english.value , arabic.value , cru.value ,earth.value ]
+   var array2 = ["الرمز" , 'الرياضيات', 'الاحياء' , 'الاسلامية' , 'الانكليزي',  'العربي' , 'الكردي'  , 'الارض']
+   
+    if(array[i] !== ''){
+
+check.push(1)
+    }
+   
+  }
+
+if(check.length == 1){
+
+alert('الرجاء كتاية الدرجات المراد الاعتراض عليها')
+return false
+
+}
+
+
+  
+
+  
+
+
+ 
+  
+  
+
+
+if(mood === 'create'){
+
+  for( var i = 0;i< dad.length; i++ ){
+
+
+
+if(num.value == dad[i].num ){
+
+alert('تم الطلب مسبقا')
+return false
+
+
+}}
+
+sum++
+ if(sum  > 1){
+  alert('اكثر من عدد الطلبات المسموح')
+  return false
+ }
+  
+
+  dad.push(newpro)
+
+}
+
+else{
+
+dad[tmp] = newpro
+alert('Update completed successfully')
+
+}
+   
+   localStorage.setItem('requsts' , JSON.stringify(dad))
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
